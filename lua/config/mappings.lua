@@ -13,7 +13,7 @@ end
 )
 vim.keymap.set("n", "<leader>a", function() -- [a]dd files to harpoon
     require("harpoon.mark").add_file()
-    end
+end
 )
 -- Window navigation mappings
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', { silent = true })
@@ -31,3 +31,14 @@ vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition)
 vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename)
 vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references)
+
+-- Debugger mappings
+vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+vim.keymap.set('n', '<leader>b', function() require('dap').toggle_breakpoint() end)
+
+-- Configuring icons for breakpoints
+vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapStopped', { text = '▶️', texthl = '', linehl = '', numhl = '' })

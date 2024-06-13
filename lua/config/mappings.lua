@@ -42,3 +42,19 @@ vim.keymap.set('n', '<leader>b', function() require('dap').toggle_breakpoint() e
 -- Configuring icons for breakpoints
 vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapStopped', { text = '▶️', texthl = '', linehl = '', numhl = '' })
+
+-- gopher mappings
+vim.api.nvim_set_keymap('n', '<leader>gsj', '<cmd>GoTagAdd json<CR>', {
+    noremap = true, silent = true, desc = 'Add json struct tags'
+})
+vim.api.nvim_set_keymap('n', '<leader>gsy', '<cmd>GoTagAdd yaml<CR>', {
+    noremap = true, silent = true, desc = 'Add yaml struct tags'
+})
+
+-- telescope settings
+vim.keymap.set('n', '<leader>pf', function() require('telescope.builtin').find_files() end)
+vim.keymap.set('n', '<C-p>', function() require('telescope.builtin').git_files() end)
+vim.keymap.set('n', '<leader>ps', function()
+    require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
+end)
+vim.keymap.set('n', 'gD', function() require('telescope.builtin').lsp_references() end)

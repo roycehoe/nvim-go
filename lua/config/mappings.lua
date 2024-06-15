@@ -5,9 +5,6 @@ vim.keymap.set("n", "<leader>gs", vim.cmd.Git) --[g]it [s]tatus
 vim.keymap.set("n", "<leader>gp", ":Git push<CR>") --[g]it [p]ush
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle) --[u]ndo tree toggle
 
-vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help) --[s]ignature
-vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help) --[s]ignature
-
 vim.keymap.set("n", "<leader>f", function() -- [f]iles stored in harpoon
     require("harpoon.ui").toggle_quick_menu()
 end
@@ -22,15 +19,11 @@ vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', { silent = true })
 vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', { silent = true })
 vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { silent = true })
 
-
 -- LSP Mappings.
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
 vim.keymap.set('n', 'gs', vim.lsp.buf.hover)
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
-vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition)
-vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename)
-vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references)
 
 -- Debugger mappings
@@ -59,3 +52,9 @@ vim.keymap.set('n', '<leader>ps', function()
     require('telescope.builtin').grep_string({ search = vim.fn.input("Grep > ") })
 end)
 vim.keymap.set('n', 'gD', function() require('telescope.builtin').lsp_references() end)
+
+-- trouble settings
+vim.keymap.set("n", "<leader>tt", "<cmd>Trouble diagnostics toggle<cr>")
+
+-- git blame settings
+vim.keymap.set("n", "<leader>gb", ":GitBlameToggle<cr>")

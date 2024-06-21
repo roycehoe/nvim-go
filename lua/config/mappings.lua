@@ -4,7 +4,9 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex) -- [p]roject [v]iew
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git) --[g]it [s]tatus
 vim.keymap.set("n", "<leader>gp", ":Git push<CR>") --[g]it [p]ush
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle) --[u]ndo tree toggle
-vim.keymap.set("n", "<leader>h", ":nnoremap <silent> <c-c> :if (&hlsearch == 1) | set nohlsearch | else | set hlsearch | endif<cr>") --Toggle highlight search
+vim.keymap.set("n", "<leader>w",--Toggle highlight word search
+    ":nnoremap <silent> <c-c> :if (&hlsearch == 1) | set nohlsearch | else | set hlsearch | endif<cr>"
+)
 
 vim.keymap.set("n", "<leader>hf", function() -- [f]iles stored in harpoon
     require("harpoon.ui").toggle_quick_menu()

@@ -19,6 +19,7 @@ return {
                         diagnostic.code = diagnostic.message_id
                     end,
                 }),
+                null_ls.builtins.diagnostics.golangci_lint
             },
             on_attach = function(client, bufnr)
                 if client.supports_method("textDocument/formatting") then
